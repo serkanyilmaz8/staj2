@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Todo List</h1>
+        <ul id="todo-list"></ul>
+        
+        <h2>Add Todo</h2>
+        <input type="text" id="new-todo-title" placeholder="Todo title">
+        <button id="add-todo">Add Todo</button>
+
+        <h2>Update Todo</h2>
+        <input type="number" id="update-todo-id" placeholder="Todo ID">
+        <input type="text" id="update-todo-title" placeholder="New title">
+        <input type="checkbox" id="update-todo-completed"> Completed
+        <button id="update-todo">Update Todo</button>
+
+        <h2>Delete Todo</h2>
+        <input type="number" id="delete-todo-id" placeholder="Todo ID">
+        <button id="delete-todo">Delete Todo</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
