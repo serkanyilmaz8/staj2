@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // POST todo
     document.getElementById('add-todo').addEventListener('click', function() {
+        const id = document.getElementById('new-todo-id').value;
         const title = document.getElementById('new-todo-title').value;
 
         fetch('/todos', {
@@ -27,11 +28,11 @@ document.addEventListener('DOMContentLoaded', function() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ id: Date.now(), title: title, completed: false }),
+            body: JSON.stringify({ id: parseInt(id), title: title, completed: false }),
         })
-        .then(response => response.json())
         .then(() => {
-            fetchTodos();
+            fetchTodos();  // Todo listesini hemen güncelle
+            document.getElementById('new-todo-id').value = '';
             document.getElementById('new-todo-title').value = '';
         })
         .catch(error => console.error('Error:', error));
@@ -50,9 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             body: JSON.stringify({ id: parseInt(id), title: title, completed: completed }),
         })
-        .then(response => response.json())
         .then(() => {
-            fetchTodos();
+            fetchTodos();  // Todo listesini hemen güncelle
             document.getElementById('update-todo-id').value = '';
             document.getElementById('update-todo-title').value = '';
             document.getElementById('update-todo-completed').checked = false;
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
             method: 'DELETE',
         })
         .then(() => {
-            fetchTodos();
+            fetchTodos();  // Todo listesini hemen güncelle
             document.getElementById('delete-todo-id').value = '';
         })
         .catch(error => console.error('Error:', error));
